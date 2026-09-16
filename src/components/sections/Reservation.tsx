@@ -44,12 +44,13 @@ export default function Reservation() {
                       <span>{res.statusLabelKo}</span>
                     </span>
                   ) : isCheck ? (
-                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-red-600 bg-red-50 px-2 py-1 rounded-lg font-noto">
+                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-purple-600 bg-purple-50 px-2 py-1 rounded-lg font-noto">
                       <AlertCircle size={12} />
                       <span>{res.statusLabelKo}</span>
                     </span>
                   ) : (
-                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded-lg font-noto">
+                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-1 rounded-lg font-noto">
+                      <AlertCircle size={12} />
                       <span>{res.statusLabelKo}</span>
                     </span>
                   )}
