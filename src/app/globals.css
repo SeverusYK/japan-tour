@@ -1,54 +1,41 @@
 @import "tailwindcss";
 
 /* =============================================================================
-   Tailwind v4 Theme Configuration
+   Tailwind v4 Theme — Tokyo Trip 2026
+   Tokyo Night + Airport Boarding Pass + Minimal
    ============================================================================= */
 @theme {
-  /* -- Brand Colors -- */
-  /* Change these to match your brand identity */
-  --color-brand-50: #f0f9ff;
-  --color-brand-100: #e0f2fe;
-  --color-brand-200: #bae6fd;
-  --color-brand-300: #7dd3fc;
-  --color-brand-400: #38bdf8;
-  --color-brand-500: #0ea5e9;
-  --color-brand-600: #0284c7;
-  --color-brand-700: #0369a1;
-  --color-brand-800: #075985;
-  --color-brand-900: #0c4a6e;
-  --color-brand-950: #082f49;
+  /* ── Brand / Trip Colors ── */
+  --color-navy:    #0A1D37;   /* Hero bg, Footer */
+  --color-blue:    #146CFF;   /* Primary CTA, active day tab */
+  --color-sky:     #72A7FF;   /* Secondary, tags, accent */
+  --color-ice:     #F4F7FB;   /* Page background */
+  --color-charcoal:#172033;   /* Body text, headings */
+  --color-muted:   #6B7A99;   /* Secondary text */
+  --color-border:  #DDE3EF;   /* Dividers */
+  --color-white:   #FFFFFF;
 
-  /* -- Font Family --
-   * `--font-sans` is injected by `next/font/google` in layout.tsx.
-   * If the designer adds a display font for headings, expose it as
-   * `--font-display` here too and apply via `font-[var(--font-display)]`.
-   */
-  --font-sans: var(--font-sans), system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-    sans-serif;
+  /* Status colors */
+  --color-status-ok:     #146CFF;
+  --color-status-check:  #E84040;
+  --color-status-gray:   #9AA5BC;
 
-  /* -- Animations -- */
-  --animate-fade-in: fadeIn 0.8s ease-out forwards;
-  --animate-slide-up: slideUp 0.6s ease-out forwards;
+  /* ── Fonts ── */
+  --font-inter: var(--font-inter), "Inter", system-ui, -apple-system, sans-serif;
+  --font-noto:  var(--font-noto), "Noto Sans KR", system-ui, sans-serif;
+  --font-sans:  var(--font-inter), var(--font-noto), system-ui, sans-serif;
+
+  /* ── Animations ── */
+  --animate-fade-in:  fadeIn  0.6s ease-out forwards;
+  --animate-slide-up: slideUp 0.5s ease-out forwards;
 
   @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
-
   @keyframes slideUp {
-    0% {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0);    }
   }
 }
 
@@ -57,13 +44,31 @@
    ============================================================================= */
 html {
   scroll-behavior: smooth;
+  /* Lock to mobile width */
+  max-width: 430px;
+  margin: 0 auto;
 }
 
 body {
-  @apply bg-white text-gray-900 antialiased;
+  background-color: var(--color-ice);
+  color: var(--color-charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  font-family: var(--font-inter), var(--font-noto), system-ui, sans-serif;
 }
 
-/* Selection color */
+/* ── Typography helpers ── */
+.font-inter { font-family: var(--font-inter); }
+.font-noto  { font-family: var(--font-noto);  }
+
+/* ── Selection ── */
 ::selection {
-  @apply bg-brand-200 text-brand-900;
+  background-color: #146CFF33;
+  color: #0A1D37;
 }
+
+/* ── Scrollbar (webkit) ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #DDE3EF; border-radius: 2px; }
