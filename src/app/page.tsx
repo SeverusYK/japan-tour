@@ -4,35 +4,22 @@ import { useEffect, useRef, useState } from "react";
 import Hero from "@/components/sections/Hero";
 import DayNav from "@/components/sections/DayNav";
 import TodaySummary from "@/components/sections/TodaySummary";
-import TodayRoute from "@/components/sections/TodayRoute";
 import DailyTimeline from "@/components/sections/DailyTimeline";
-import Places from "@/components/sections/Places";
-import Food from "@/components/sections/Food";
-import Shopping from "@/components/sections/Shopping";
 import Reservation from "@/components/sections/Reservation";
-import Transport from "@/components/sections/Transport";
+import Shopping from "@/components/sections/Shopping";
 import Checklist from "@/components/sections/Checklist";
 import Footer from "@/components/sections/Footer";
 
-function SectionDivider({ labelKo, labelEn }: { labelKo: string; labelEn: string }) {
+function SectionDivider({ labelKo }: { labelKo: string }) {
   return (
-    <div className="px-4 pt-10 pb-3 flex items-center gap-3">
-      <div className="flex-1 h-px" style={{ background: "#DDE3EF" }} />
-      <div className="text-center">
-        <span
-          className="text-xs font-bold block"
-          style={{ color: "#146CFF", fontFamily: "var(--font-noto)" }}
-        >
-          {labelKo}
-        </span>
-        <span
-          className="text-[10px] tracking-widest uppercase block"
-          style={{ color: "#9AA5BC", fontFamily: "var(--font-inter)" }}
-        >
-          {labelEn}
-        </span>
-      </div>
-      <div className="flex-1 h-px" style={{ background: "#DDE3EF" }} />
+    <div className="px-4 pt-8 pb-2 flex items-center gap-3">
+      <div className="flex-1 h-px bg-gray-200" />
+      <span
+        className="text-xs font-bold text-gray-500 font-noto tracking-wider"
+      >
+        {labelKo}
+      </span>
+      <div className="flex-1 h-px bg-gray-200" />
     </div>
   );
 }
@@ -67,42 +54,36 @@ export default function Home() {
   return (
     <div
       ref={mainContentRef}
-      className="min-h-screen pb-12"
-      style={{ background: "#F4F7FB" }}
+      className="min-h-screen pb-8 bg-[#F4F7FB]"
     >
-      {/* Hero */}
+      {/* 1. Hero: 간결한 타이틀 & 여행 날짜 */}
       <Hero onScrollDown={handleScrollDown} />
 
-      {/* Sticky Day Nav */}
+      {/* 2. Sticky Day Nav: 1일차 / 2일차 / 3일차 */}
       <div ref={dayNavRef}>
         <DayNav activeDay={activeDay} onDayChange={handleDayChange} />
       </div>
 
-      {/* Day-specific sections */}
+      {/* 3. Today Summary: 오늘 테마 + 코스 칩 + 구글 지도 전체 보기 버튼 */}
       <TodaySummary activeDay={activeDay} />
-      <TodayRoute activeDay={activeDay} />
 
-      <SectionDivider labelKo="상세 일정표" labelEn="DAILY TIMELINE" />
+      {/* 4. Daily Timeline: 시간별 상세 일정 & 길찾기 버튼 */}
+      <SectionDivider labelKo="오늘의 시간별 일정표" />
       <DailyTimeline activeDay={activeDay} />
 
-      <SectionDivider labelKo="방문 장소 안내" labelEn="PLACES" />
-      <Places />
-
-      <SectionDivider labelKo="도쿄 맛집 리스트" labelEn="WHAT WE'RE EATING" />
-      <Food />
-
-      <SectionDivider labelKo="쇼핑 체크리스트" labelEn="SHOPPING LIST" />
-      <Shopping />
-
-      <SectionDivider labelKo="예약 및 주요 일정" labelEn="RESERVATIONS" />
+      {/* 5. Reservation: 놓치지 말아야 할 5대 예약 현황 */}
+      <SectionDivider labelKo="주요 예약 및 시간" />
       <Reservation />
 
-      <SectionDivider labelKo="공항 및 특급열차 교통편" labelEn="AIRPORT & TRANSPORT" />
-      <Transport />
+      {/* 6. Shopping: 현장 위시리스트 체크 */}
+      <SectionDivider labelKo="도쿄 쇼핑 위시리스트" />
+      <Shopping />
 
-      <SectionDivider labelKo="여행 준비물 체크리스트" labelEn="TRAVEL CHECKLIST" />
+      {/* 7. Checklist: 출발 전 짐 싸기 체크 */}
+      <SectionDivider labelKo="출발 전 준비물 체크" />
       <Checklist />
 
+      {/* 8. Footer */}
       <Footer />
     </div>
   );
